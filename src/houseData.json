@@ -1,0 +1,132 @@
+{
+    "apartments": [
+      {
+        "id": "house1",
+        "name": "Low-Rise Apartment",
+        "imageSrc": "src/assets/images/apartments/house1.jpg",
+        "paragraph": "A low-rise apartment building is a shorter building, typically consisting of one to three floors with fewer apartment units on each floor.",
+        "price": "10.5M"
+    },
+    {
+        "id": "house2",
+        "name": "American-New Apartment",
+        "imageSrc": "src/assets/images/apartments/house2.jpg",
+        "paragraph": "An american-new apartment building is......................................................................................................",
+        "price": "10.3M"
+      },
+      {
+        "id": "house3",
+        "name": "Home-Living Apartment",
+        "imageSrc": "src/assets/images/apartments/house3.jpg",
+        "paragraph": "A home-living apartment building is.......................................................................................................",
+        "price": "10.4M"
+      },
+      {
+        "id": "house4",
+        "name": "Luxury Apartment",
+        "imageSrc": "src/assets/images/apartments/house4.jpg",
+        "paragraph": "An luxury apartment building is............................................................................................................",
+        "price": "11.3M"
+      },
+      {
+        "id": "house5",
+        "name": "Mission Apartment",
+        "imageSrc": "src/assets/images/apartments/house5.jpeg",
+        "paragraph": "A mission apartment building is.............................................................................................................",
+        "price": "10.9M"
+      },
+      {
+        "id": "house6",
+        "name": "Modern Apartment",
+        "imageSrc": "src/assets/images/apartments/house6.jpg",
+        "paragraph": "A modern apartment building is...............................................................................................................",
+        "price": "15.1M"
+      },
+      {
+        "id": "house7",
+        "name": "Real-Estate Apartment",
+        "imageSrc": "src/assets/images/apartments/house7.jpg",
+        "paragraph": "A real estate apartment building is...........................................................................................................",
+        "price": "13.2M"
+      },
+      {
+        "id": "house8",
+        "name": "Rental Apartment",
+        "imageSrc": "src/assets/images/apartments/house8.jpeg",
+        "paragraph": "A rental apartment building is..................................................................................................................",
+        "price": "10.7M"
+      },
+      {
+        "id": "house9",
+        "name": "Calgary Apartment",
+        "imageSrc": "src/assets/images/apartments/house9.jpg",
+        "paragraph": "An calgary apartment building is.................................................................................................................",
+        "price": "9.85M"
+      }],
+
+    "townhouses": [
+      {
+        "id": "house1",
+        "name": "Low-Rise Townhouse",
+        "imageSrc": "src/assets/images/apartments/house1.jpg",
+        "paragraph": "A low-rise apartment building is a shorter building, typically consisting of one to three floors with fewer apartment units on each floor.",
+        "price": "10.5M"
+    },
+    {
+        "id": "house2",
+        "name": "American-New Townhouse",
+        "imageSrc": "src/assets/images/apartments/house2.jpg",
+        "paragraph": "An american-new apartment building is......................................................................................................",
+        "price": "10.3M"
+      },
+      {
+        "id": "house3",
+        "name": "Home-Living Townhouse",
+        "imageSrc": "src/assets/images/apartments/house3.jpg",
+        "paragraph": "A home-living apartment building is.......................................................................................................",
+        "price": "10.4M"
+      },
+      {
+        "id": "house4",
+        "name": "Luxury Townhouse",
+        "imageSrc": "src/assets/images/apartments/house4.jpg",
+        "paragraph": "An luxury apartment building is............................................................................................................",
+        "price": "11.3M"
+      },
+      {
+        "id": "house5",
+        "name": "Mission Townhouse",
+        "imageSrc": "src/assets/images/apartments/house5.jpeg",
+        "paragraph": "A mission apartment building is.............................................................................................................",
+        "price": "10.9M"
+      },
+      {
+        "id": "house6",
+        "name": "Modern Townhouse",
+        "imageSrc": "src/assets/images/apartments/house6.jpg",
+        "paragraph": "A modern apartment building is...............................................................................................................",
+        "price": "15.1M"
+      },
+      {
+        "id": "house7",
+        "name": "Real-Estate Townhouse",
+        "imageSrc": "src/assets/images/apartments/house7.jpg",
+        "paragraph": "A real estate apartment building is...........................................................................................................",
+        "price": "13.2M"
+      },
+      {
+        "id": "house8",
+        "name": "Rental Townhouse",
+        "imageSrc": "src/assets/images/apartments/house8.jpeg",
+        "paragraph": "A rental apartment building is..................................................................................................................",
+        "price": "10.7M"
+      },
+      {
+        "id": "house9",
+        "name": "Calgary Townhouse",
+        "imageSrc": "src/assets/images/apartments/house9.jpg",
+        "paragraph": "An calgary apartment building is.................................................................................................................",
+        "price": "9.85M"
+      }]
+
+}
