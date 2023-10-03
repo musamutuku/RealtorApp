@@ -29,7 +29,6 @@ import { RouterLink, RouterView } from 'vue-router';
 }
 
 .house-category {
-    /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
     font-size: 22px;
     background-color: rgb(242, 242, 243);
     min-width: 170px;

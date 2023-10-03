@@ -14,7 +14,7 @@ const imgAlt = ref()
 const allData = ref(userdata.value.apartments)
 
 
-watch(findmatch, () => {
+watch(findmatch, () => {    
     if (findmatch.value == "") {
         userdata.value = allData.value
     }
@@ -73,7 +73,7 @@ function getRadoms() {
         </div>
         <div class="small-card">
             <apartmentSingle :price-data="price" :name-data="nameHouse" :paragraph-data="paragraph"
-                :image-data="imageSrc" />
+                :image-data="imageSrc" @showModal=""/>
         </div>
     </div>
 </template>
