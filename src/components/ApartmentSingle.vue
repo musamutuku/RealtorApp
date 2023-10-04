@@ -13,12 +13,12 @@ defineProps({
 
 </script>
 
+
 <template>
     <div>
         <Teleport to="body">
-            <contactAdmin v-if="showModal"/>
+            <contactAdmin v-if="showModal" @closeModal="showModal=false"/>
         </Teleport>
-        
         <div class="card-display">
             <h2 id="title">{{ nameData }}</h2>
             <div class="image-display">
@@ -29,7 +29,6 @@ defineProps({
                 <h2 id="price">Price <span id="kash-price">KES. {{ priceData }}</span></h2>
                 <button @click="showModal=true">Contact admin</button>
                 <a href="#" id="house-info">See related houses</a>
-                <!-- <RouterLink :to="{name: 'houseInfo'}" id="related-houses">See related houses</RouterLink> -->
             </div>
         </div>
     </div>
@@ -37,25 +36,22 @@ defineProps({
 
 <style scoped>
 .card-display {
-    height: 95%;
-    width: 720px;
+    min-width: 696px;
+    height: 100%;
     background-color: rgb(231, 235, 235);
-    border-radius: 5px;
-    margin-left: 3%;
-    margin-top: 5%;
-    float: left;
+    margin-top: 12%;
 }
 
 .image-display {
-    border-radius: 20px;
+    width: 100%;
 }
-
 img {
     width: 100%;
+    max-width: 696px;
     height: 100%;
+    max-height: 430px;
     border-radius: 0px 0px 10px 10px;
 }
-
 #title {
     margin-left: 10px;
     font-size: 30px;
@@ -64,14 +60,14 @@ img {
     font-style: italic;
 }
 
-p {
+.house-info p {
     font-family: 'Times New Roman', Times, serif;
-    font-size: 19px;
-    font-weight: 545;
+    font-size: 18px;
+    font-weight: 505;
     color: rgb(52, 61, 52);
     background-color: rgb(233, 224, 224);
+    width: 696px;
     margin-left: 5px;
-    margin-right: 5px;
     margin-top: 5px;
 }
 
@@ -115,6 +111,7 @@ button:hover {
 }
 
 #house-info {
-    margin-left: 10px;
+    margin-left: 20px;
     font-size: 19px;
-}</style>
+} 
+</style>

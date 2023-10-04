@@ -26,6 +26,7 @@ import { RouterLink, RouterView } from 'vue-router';
     font-weight: bolder;
     color: rgb(35, 47, 95);
     text-shadow: 3px 3px rgb(163, 104, 81);
+    margin-left: 2%;
 }
 
 .house-category {
@@ -38,7 +39,8 @@ import { RouterLink, RouterView } from 'vue-router';
     padding-top: 10px;
     border-radius: 4px;
     line-height: 24px;
-    margin-top: 10%;
+    margin-top: 11%;
+    height: 90%;
 }
 
 a {

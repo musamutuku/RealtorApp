@@ -54,11 +54,11 @@ function getRadoms() {
 <template>
     <div class="main-div">
         <div class="minor-div">
-            <div class="search-div"><input type="text" placeholder="Search apartment..." v-model.trim="findmatch">
+            <div class="search-div">
+                <input type="text" placeholder="Search apartment..." v-model.trim="findmatch">
                 <div class="searchImg-div" @click="searchHouse()"><img src="@/assets/images/search.png"></div>
             </div>
-            <main class="all-cards">
-                <div class="main-cards">
+                <div class="all-cards">
                     <div v-for="user in userdata" :key="user.id">
                         <div class="card-container" :id="user.id" :style="{ backgroundColor: getRadoms() }"
                             @click="getDetails(user)">
@@ -69,7 +69,6 @@ function getRadoms() {
                         </div>
                     </div>
                 </div>
-            </main>
         </div>
         <div class="small-card">
             <apartmentSingle :price-data="price" :name-data="nameHouse" :paragraph-data="paragraph"
@@ -81,70 +80,67 @@ function getRadoms() {
 <style scoped>
 .main-div{
     display: flex;
+    width: 88vw;
+    height: 98vh;
+    margin-left: 1%;
 }
 .minor-div {
-    width: 47%;
+    width: 50%;
 }
 
 .search-div {
     display: flex;
     border: 1px solid gray;
-    width: 270px;
-    height: 33px;
+    width: 40%;
+    height: 4.9%;
     background-color: rgb(250, 247, 246);
-    border-radius: 5px;
-    cursor: pointer;
+    border-radius: 20px;
     margin: auto;
     margin-top: 3%;
 }
-
-.searchImg-div {
-    width: 16%;
-    border-radius: 0px 3px 3px 0px;
+.search-div input {
+    width: 85%;
+    outline: none;
+    border: none;
+    border-radius: 20px 0px 0px 20px;
+    padding-left: 5%;
+    font-size: 16px;
 }
 
-.search-div:hover {
+.searchImg-div {
+    border-radius: 0px 20px 20px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(206, 192, 192, 0.5);
+    width: 18%;
+}
+
+.searchImg-div:hover {
     background-color: rgb(212, 203, 200);
 }
 
-.search-div img {
+.searchImg-div img {
     width: 25px;
     height: 25px;
-    margin-left: 10px;
-    margin-top: 5px;
+    margin-top: 5.9%;
 }
-
-.search-div input {
-    width: 225px;
-    outline: none;
-    border-radius: 3px 0px 0px 3px;
-    border: 1px solid gray;
-}
-
-.main-cards {
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 800px;
-    gap: 1em;
-}
-
 
 .all-cards {
-    padding: 10px;
     display: flex;
-    height: fit-content;
-    margin-left: 1%;
-    margin-top: 2%;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 1.5em;
+    align-items: center;
+    padding-top: 4%;
 }
-
 .card-container {
     border-radius: 10px;
-    width: 200px;
-    height: 200px;
+    width: 210px;
+    height: 195px;
     overflow-y: hidden;
-    box-shadow: 4px 4px lightblue;
+    box-shadow: 3px 3px lightblue;
 }
-
 .card-container:hover {
     cursor: pointer;
     transition: 2s;
@@ -158,13 +154,12 @@ function getRadoms() {
     font-size: 16px;
     margin-top: 5px;
 }
-
+.image {
+    width: 100%;
+    height: 87%;
+}
 img {
     width: 100%;
     height: 100%;
 }
-
-.image {
-    width: 100%;
-    height: 80%;
-}</style>
+</style>

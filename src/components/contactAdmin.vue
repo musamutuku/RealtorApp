@@ -6,13 +6,13 @@ const text = ref("")
 <template>
     <div class="contact-container">
         <div class="contact-div">
-            <div class="close-div"><img src="@/assets/images/close1.png"></div>
+            <div class="close-div" @click="$emit('closeModal')"><img src="@/assets/images/close1.png"></div>
             <form action="#" class="contactForm">
                 <input type="text" placeholder="Full name*" required>
                 <input type="email" placeholder="Email address*" required>
                 <input type="number" placeholder="Phone number*" required>
                 <textarea name="" id="my-description" cols="" rows="" placeholder="How can admin help you?"
-                    @focus="text = 'I am interested in this house'" required>{{ text }}</textarea>
+                    @focus="text = 'I am interested by this house'" required>{{ text }}</textarea>
                 <input type="submit" value="SEND" id="sendBtn">
             </form>
         </div>
@@ -59,7 +59,7 @@ const text = ref("")
     height: 14%;
     border-radius: 8px;
     outline: none;
-    border: 1px solid rgb(126, 47, 47);
+    border: 1px solid rgb(155, 62, 62);
     font-size: 22px;
 }
 
@@ -73,7 +73,7 @@ const text = ref("")
 #my-description {
     font-size: 20px;
     border-radius: 5px;
-    border: 1px solid rgba(240, 128, 128, 0.87);
+    border: 1px solid rgb(155, 62, 62);
     outline: none;
     height: 33%;
     width: 93%;
@@ -88,6 +88,7 @@ const text = ref("")
     font-weight: bold;
     letter-spacing: 1px;
     margin-bottom: 3%;
+    height: 12%;
 }
 
 #sendBtn:hover {
@@ -108,6 +109,7 @@ const text = ref("")
     width: 100%;
     height: 100%;
 }
+
 .close-div:hover{
     background-color: rgb(190, 169, 169);
     cursor: pointer;
