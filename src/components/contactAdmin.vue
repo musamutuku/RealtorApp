@@ -1,18 +1,20 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 const text = ref("")
+const inputValue = ref("")
+const changeCase = computed(()=> inputValue.value = inputValue.value.toLowerCase())
 </script>
 
 <template>
     <div class="contact-container">
         <div class="contact-div">
-            <div class="close-div" @click="$emit('closeModal')"><img src="@/assets/images/close1.png"></div>
+            <div class="close-div" @click="$emit('closeModal')" title="Close"><img src="@/assets/images/close1.png"></div>
             <form action="#" class="contactForm">
                 <input type="text" placeholder="Full name*" required>
-                <input type="email" placeholder="Email address*" required>
+                <input type="email" placeholder="Email address*" @blur="changeCase" v-model="inputValue" required>
                 <input type="number" placeholder="Phone number*" required>
                 <textarea name="" id="my-description" cols="" rows="" placeholder="How can admin help you?"
-                    @focus="text = 'I am interested by this house'" required>{{ text }}</textarea>
+                    @focus="text = 'I am interested in buying this house'" required>{{ text }}</textarea>
                 <input type="submit" value="SEND" id="sendBtn">
             </form>
         </div>
@@ -93,6 +95,7 @@ const text = ref("")
 
 #sendBtn:hover {
     background-color: darkgreen;
+    cursor: pointer;
 }
 
 .close-div{

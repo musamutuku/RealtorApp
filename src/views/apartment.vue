@@ -100,11 +100,11 @@ function getRadoms() {
 }
 .search-div input {
     width: 85%;
-    outline: none;
     border: none;
     border-radius: 20px 0px 0px 20px;
     padding-left: 5%;
     font-size: 16px;
+    outline-width: thin;
 }
 
 .searchImg-div {
