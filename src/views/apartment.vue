@@ -62,10 +62,10 @@ function getRadoms() {
                     <div v-for="user in userdata" :key="user.id">
                         <div class="card-container" :id="user.id" :style="{ backgroundColor: getRadoms() }"
                             @click="getDetails(user)">
-                            <h2 class="house-no">{{ user.name }}</h2>
                             <div class="image">
                                 <img :src="user.imageSrc">
                             </div>
+                            <h2 class="house-name">{{ user.name }}</h2>
                         </div>
                     </div>
                 </div>
@@ -103,6 +103,7 @@ function getRadoms() {
     border: none;
     border-radius: 20px 0px 0px 20px;
     padding-left: 5%;
+    font-family: quicksand;
     font-size: 16px;
     outline-width: thin;
 }
@@ -135,24 +136,21 @@ function getRadoms() {
     padding-top: 4%;
 }
 .card-container {
-    border-radius: 10px;
     width: 210px;
     height: 195px;
     overflow-y: hidden;
-    box-shadow: 3px 3px lightblue;
 }
 .card-container:hover {
     cursor: pointer;
     transition: 2s;
-    scale: 1.05;
+    scale: 1.1;
 
 }
 
-.house-no {
+.house-name {
     text-align: center;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: quicksand;
     font-size: 16px;
-    margin-top: 5px;
 }
 .image {
     width: 100%;

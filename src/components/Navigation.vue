@@ -21,7 +21,7 @@ import { RouterLink, RouterView } from 'vue-router';
 </template>         
 <style scoped>
 #header {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: quicksand;
     font-size: 40px;
     font-weight: bolder;
     color: rgb(35, 47, 95);
@@ -30,6 +30,7 @@ import { RouterLink, RouterView } from 'vue-router';
 }
 
 .house-category {
+    font-family: quicksand;
     font-size: 22px;
     background-color: rgb(242, 242, 243);
     min-width: 170px;
@@ -39,14 +40,14 @@ import { RouterLink, RouterView } from 'vue-router';
     padding-top: 10px;
     border-radius: 4px;
     line-height: 24px;
-    margin-top: 11%;
+    margin-top: 10.9%;
     height: 90%;
 }
 
 a {
     color: rgb(49, 110, 49);
     text-decoration: none;
-    font-weight: 501;
+    font-weight: 510;
     display: flex;
     flex-direction: column;
     margin-top: 0.2em;
@@ -55,7 +56,7 @@ a {
 a.router-link-active {
     color: rgb(194, 71, 77);
     background-color: rgb(191, 221, 121);
-    border-radius: 10px;
+    border-radius: 2px;
 }
 
 .category-div {

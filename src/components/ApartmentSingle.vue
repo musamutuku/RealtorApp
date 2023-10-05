@@ -28,7 +28,7 @@ defineProps({
                 <p>{{ paragraphData }}<span id="more-info"><a href="#1" id="more-info-link">...more</a></span></p>
                 <h2 id="price">Price <span id="kash-price">KES. {{ priceData }}</span></h2>
                 <button @click="showModal=true">Contact admin</button>
-                <a href="#" id="house-info">See related houses</a>
+                <a href="#" id="house-info">See also related houses</a>
             </div>
         </div>
     </div>
@@ -39,7 +39,7 @@ defineProps({
     min-width: 696px;
     height: 100%;
     background-color: rgb(231, 235, 235);
-    margin-top: 12%;
+    margin-top: 11.9%;
 }
 
 .image-display {
@@ -47,28 +47,27 @@ defineProps({
 }
 img {
     width: 100%;
-    max-width: 696px;
     height: 100%;
     max-height: 430px;
-    border-radius: 0px 0px 10px 10px;
 }
 #title {
     margin-left: 10px;
     font-size: 30px;
     color: chocolate;
+    font-family: quicksand;
     font-weight: bold;
     font-style: italic;
 }
 
 .house-info p {
-    font-family: 'Times New Roman', Times, serif;
     font-size: 18px;
-    font-weight: 505;
+    font-weight: 500;
     color: rgb(52, 61, 52);
     background-color: rgb(233, 224, 224);
     width: 696px;
     margin-left: 5px;
     margin-top: 5px;
+    font-family: quicksand;
 }
 
 #more-info {
@@ -85,23 +84,27 @@ a:visited {
 
 #price {
     margin-left: 20px;
+    font-family: quicksand;
     font-size: 25px;
+    font-weight: bold;
 }
 
 #kash-price {
     color: brown;
+    font-family: quicksand;
     font-size: 22px;
+    font-weight: bold;
 }
 
 button {
-    margin-left: 20px;
+    margin-left: 19px;
     font-size: 20px;
     background-color: darkgreen;
     color: white;
     border: none;
     border-radius: 5px;
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: quicksand;
     padding: 3px 10px;
     margin-top: 10px;
 }
@@ -111,7 +114,9 @@ button:hover {
 }
 
 #house-info {
-    margin-left: 20px;
+    margin-left: 10%;
+    font-family: quicksand;
+    font-weight: 510;
     font-size: 19px;
 } 
 </style>

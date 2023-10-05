@@ -62,6 +62,7 @@ const changeCase = computed(()=> inputValue.value = inputValue.value.toLowerCase
     border-radius: 8px;
     outline: none;
     border: 1px solid rgb(155, 62, 62);
+    font-family: quicksand;
     font-size: 22px;
 }
 
@@ -73,6 +74,7 @@ const changeCase = computed(()=> inputValue.value = inputValue.value.toLowerCase
 }
 
 #my-description {
+    font-family: quicksand;
     font-size: 20px;
     border-radius: 5px;
     border: 1px solid rgb(155, 62, 62);
@@ -85,8 +87,8 @@ const changeCase = computed(()=> inputValue.value = inputValue.value.toLowerCase
     border: 1px solid green;
     background-color: #006400c0;
     color: white;
+    font-family: quicksand;
     font-size: 24px;
-    font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     letter-spacing: 1px;
     margin-bottom: 3%;
