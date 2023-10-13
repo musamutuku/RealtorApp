@@ -70,31 +70,18 @@ function showDefaultMsg(){
         message.value = 'I am interested in buying this house';
     }   
 }
-function checkInput(event){
-    const keyCode = event.keyCode;
-    const inputLength = (event.target.value).length+1;
-    if(inputLength <=12){
-        if (
-        (keyCode >= 48 && keyCode <= 57) || // Numbers 0-9
-        (keyCode >= 96 && keyCode <= 105) || // Numeric keypad
-        keyCode === 8 || // Backspace
-        keyCode === 9 || // Tab
-        keyCode === 37 || // Left arrow
-        keyCode === 39 || // Right arrow
-        keyCode === 46 || // Delete
-        keyCode === 13 // Enter
-        ) {
-            return true;
-        }
-        else{
-            event.preventDefault();
-            return false;
-        }}
-    else if(keyCode != 8 && keyCode != 37 && keyCode != 39){
-        event.preventDefault();
-        return false;
+
+function handleInput(event) {
+      // Get the input value and remove any non-numeric characters
+      let inputValue = event.target.value.replace(/\D/g, '');
+
+      // If the input starts with '0', retain it
+      if (inputValue.startsWith('0')) {
+        phone.value = '0' + inputValue.slice(1);
+      } else {
+        phone.value = inputValue;
+      }
     }
-}
 
 </script>
 
@@ -106,9 +93,9 @@ function checkInput(event){
             <div class="contactForm" :style="formStyles">
                 <input type="text" placeholder="Full name*" v-model="username" @focus="showMsg=false" maxlength="50" required>
                 <input type="email" placeholder="Email address*" @blur="changeCase" v-model="email" @focus="showMsg=false" maxlength="50" required>
-                <input type="number" placeholder="Phone number*" v-model="phone" @focus="showMsg=false" @keydown="checkInput($event)" required>
+                <input placeholder="Phone number*" @input="handleInput($event)" maxlength="12" v-model="phone" @focus="showMsg=false" required>
                 <textarea name="" id="my-description" cols="" rows="" placeholder="How can admin help you?"
-                    @focus="showDefaultMsg()" v-model="message" maxlength="250" required></textarea>
+                    @focus="showDefaultMsg()" v-model="message" maxlength="250" @keyup.enter="postData()" required></textarea>
                 <button @click="postData()" id="sendBtn">SEND</button>
             </div>
             <div class="success-div" v-show="hideMsg">
@@ -237,7 +224,7 @@ function checkInput(event){
     display: flex;
     background-color: white;
     width: 80%;
-    height: 20%;
+    height: 21%;
     color: dark gray;
     justify-content: center;
     padding-top: 5%;
@@ -254,10 +241,10 @@ function checkInput(event){
     font-size: 17.5px;
 }
 .success_img{
-    width: 6.5%;
+    width: 6.6%;
     height: 26%;
     margin-left: 0.4%;
-    margin-top: 1%;
+    margin-top: 1.3%;
 }
 .success_img img{
     width: 100%;
