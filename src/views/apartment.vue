@@ -5,6 +5,7 @@ import { onMounted, watch } from 'vue';
 import apartmentSingle from '@/components/ApartmentSingle.vue';
 
 const findmatch = ref("")
+const noMatch = ref("")
 const userdata = ref(data)
 const paragraph = ref()
 const price = ref()
@@ -14,13 +15,17 @@ const imgAlt = ref()
 const allData = ref(userdata.value.apartments)
 
 
-watch(findmatch, () => {    
+watch(findmatch, () => {
     if (findmatch.value == "") {
         userdata.value = allData.value
+        noMatch.value = ""
     }
 })
 function searchHouse() {
     userdata.value = allData.value.filter(user => user.name.toLowerCase().includes(findmatch.value.toLowerCase()));
+    if(userdata.value  == ""){
+        noMatch.value = "No any match!"
+    }
 }
 onMounted(() => {
     let userDefault = userdata.value.apartments[0]
@@ -51,39 +56,42 @@ function getRadoms() {
 
 }
 </script>
+
 <template>
     <div class="main-div">
         <div class="minor-div">
             <div class="search-div">
-                <input type="text" placeholder="Search apartment..." v-model.trim="findmatch">
+                <input type="text" placeholder="Search apartment..." v-model.trim="findmatch" @keyup.enter="searchHouse()">
                 <div class="searchImg-div" @click="searchHouse()"><img src="@/assets/images/search.png"></div>
             </div>
-                <div class="all-cards">
-                    <div v-for="user in userdata" :key="user.id">
-                        <div class="card-container" :id="user.id" :style="{ backgroundColor: getRadoms() }"
-                            @click="getDetails(user)">
-                            <div class="image">
-                                <img :src="user.imageSrc">
-                            </div>
-                            <h2 class="house-name">{{ user.name }}</h2>
+            <span class="noMatch">{{ noMatch }}</span>
+            <div class="all-cards">
+                <div v-for="user in userdata" :key="user.id">
+                    <div class="card-container" :id="user.id" :style="{ backgroundColor: getRadoms() }"
+                        @click="getDetails(user)">
+                        <div class="image">
+                            <img :src="user.imageSrc">
                         </div>
+                        <h2 class="house-name">{{ user.name }}</h2>
                     </div>
                 </div>
+            </div>
         </div>
         <div class="small-card">
-            <apartmentSingle :price-data="price" :name-data="nameHouse" :paragraph-data="paragraph"
-                :image-data="imageSrc" @showModal=""/>
+            <apartmentSingle :price-data="price" :name-data="nameHouse" :paragraph-data="paragraph" :image-data="imageSrc"
+                @showModal="" />
         </div>
     </div>
 </template>
  
 <style scoped>
-.main-div{
+.main-div {
     display: flex;
     width: 88vw;
     height: 98vh;
     margin-left: 1%;
 }
+
 .minor-div {
     width: 50%;
 }
@@ -98,6 +106,7 @@ function getRadoms() {
     margin: auto;
     margin-top: 3%;
 }
+
 .search-div input {
     width: 85%;
     border: none;
@@ -126,6 +135,11 @@ function getRadoms() {
     height: 25px;
     margin-top: 5.9%;
 }
+.noMatch{
+    font-size: 16px;
+    color: brown;
+    margin-left: 30%;
+}
 
 .all-cards {
     display: flex;
@@ -133,13 +147,15 @@ function getRadoms() {
     width: 100%;
     gap: 1.5em;
     align-items: center;
-    padding-top: 4%;
+    border-top: 1px solid rgb(231, 235, 235);
 }
+
 .card-container {
     width: 210px;
     height: 195px;
     overflow-y: hidden;
 }
+
 .card-container:hover {
     cursor: pointer;
     transition: 2s;
@@ -152,12 +168,13 @@ function getRadoms() {
     font-family: quicksand;
     font-size: 16px;
 }
+
 .image {
     width: 100%;
     height: 87%;
 }
+
 img {
     width: 100%;
     height: 100%;
-}
-</style>
+}</style>

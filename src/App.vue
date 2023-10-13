@@ -6,7 +6,7 @@ import navigation from './components/Navigation.vue'
 <template>
   <main>
     <div>
-      <navigation style="position: absolute;"/>
+      <navigation style="position: absolute;" />
     </div>
   </main>
 </template>

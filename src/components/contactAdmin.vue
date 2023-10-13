@@ -1,22 +1,120 @@
 <script setup>
-import { ref, computed } from 'vue';
-const text = ref("")
-const inputValue = ref("")
-const changeCase = computed(()=> inputValue.value = inputValue.value.toLowerCase())
+import { ref, computed,onMounted } from 'vue';
+
+
+const showMsg = ref(false)
+const username = ref("")
+const email = ref("")
+const phone = ref("")
+const message = ref("")
+const sendbackMsg = ref("")
+const errorMsg = ref("")
+const hideMsg = ref(false)
+const formStyles = ref({opacity: 1, pointerEvents: ''})
+const emit = defineEmits(['closeModal'])
+
+const changeCase = computed(() => email.value = email.value.toLowerCase())
+
+
+function postData(){
+    const userData = {
+        userName: username.value,
+        userEmail: email.value,
+        userPhone: phone.value,
+        userMessage: message.value
+    }
+    if (username.value!='' && email.value!='' && phone.value!='' && message.value!='') {
+        if(email.value.includes('@')){
+            fetch('http://127.0.0.1:3000/api/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(userData),
+            })
+            .then(response => response.json())
+            .then(data => sendSuccess(data.returnMsg))
+        }
+        else{
+            showMsg.value = true
+            errorMsg.value = "Please enter a valid email!"
+        }
+    }
+    else{
+        showMsg.value = true
+        errorMsg.value = "Please fill all the fields!"
+        setTimeout(() => {
+            showMsg.value = false
+        }, 10000);
+    }
+}
+function sendSuccess(feedbackMsg){
+    username.value = '';
+    email.value = '';
+    phone.value = '';
+    message.value = '';
+    sendbackMsg.value = feedbackMsg;
+    hideMsg.value = true;
+    formStyles.value = {
+        opacity: 0.98,
+        pointerEvents: 'none'
+    }
+    setTimeout(() => {
+        emit('closeModal')
+    }, 10000);
+}
+
+function showDefaultMsg(){
+    showMsg.value = false;
+    if(message.value == ''){
+        message.value = 'I am interested in buying this house';
+    }   
+}
+function checkInput(event){
+    const keyCode = event.keyCode;
+    const inputLength = (event.target.value).length+1;
+    if(inputLength <=12){
+        if (
+        (keyCode >= 48 && keyCode <= 57) || // Numbers 0-9
+        (keyCode >= 96 && keyCode <= 105) || // Numeric keypad
+        keyCode === 8 || // Backspace
+        keyCode === 9 || // Tab
+        keyCode === 37 || // Left arrow
+        keyCode === 39 || // Right arrow
+        keyCode === 46 || // Delete
+        keyCode === 13 // Enter
+        ) {
+            return true;
+        }
+        else{
+            event.preventDefault();
+            return false;
+        }}
+    else if(keyCode != 8 && keyCode != 37 && keyCode != 39){
+        event.preventDefault();
+        return false;
+    }
+}
+
 </script>
 
 <template>
     <div class="contact-container">
         <div class="contact-div">
+            <p class="error-msg" v-show="showMsg">{{errorMsg}}</p>
             <div class="close-div" @click="$emit('closeModal')" title="Close"><img src="@/assets/images/close1.png"></div>
-            <form action="#" class="contactForm">
-                <input type="text" placeholder="Full name*" required>
-                <input type="email" placeholder="Email address*" @blur="changeCase" v-model="inputValue" required>
-                <input type="number" placeholder="Phone number*" required>
+            <div class="contactForm" :style="formStyles">
+                <input type="text" placeholder="Full name*" v-model="username" @focus="showMsg=false" maxlength="50" required>
+                <input type="email" placeholder="Email address*" @blur="changeCase" v-model="email" @focus="showMsg=false" maxlength="50" required>
+                <input type="number" placeholder="Phone number*" v-model="phone" @focus="showMsg=false" @keydown="checkInput($event)" required>
                 <textarea name="" id="my-description" cols="" rows="" placeholder="How can admin help you?"
-                    @focus="text = 'I am interested in buying this house'" required>{{ text }}</textarea>
-                <input type="submit" value="SEND" id="sendBtn">
-            </form>
+                    @focus="showDefaultMsg()" v-model="message" maxlength="250" required></textarea>
+                <button @click="postData()" id="sendBtn">SEND</button>
+            </div>
+            <div class="success-div" v-show="hideMsg">
+                <p class="p1">{{sendbackMsg}}</p><span class="success_img"><img src="@/assets/images/success_img.png"></span>
+                <p class="p2">You will get a feedback after 24 hours</p>
+            </div>
         </div>
     </div>
 </template>
@@ -41,7 +139,19 @@ const changeCase = computed(()=> inputValue.value = inputValue.value.toLowerCase
     align-items: center;
     position: relative;
 }
-
+.error-msg{
+    background-color: rgba(255, 230, 230);
+    color: #980200;
+    position: absolute;
+    width: 83%;
+    height: 8%;
+    top: -4%;
+    left: 5%;
+    border-radius: 5px;
+    font-size: 17px;
+    padding-top: 5px;
+    padding-left: 6px;
+}
 .contactForm {
     align-items: center;
     width: 90%;
@@ -92,7 +202,9 @@ const changeCase = computed(()=> inputValue.value = inputValue.value.toLowerCase
     font-weight: bold;
     letter-spacing: 1px;
     margin-bottom: 3%;
+    width: 93%;
     height: 12%;
+    border-radius: 5px;
 }
 
 #sendBtn:hover {
@@ -100,7 +212,7 @@ const changeCase = computed(()=> inputValue.value = inputValue.value.toLowerCase
     cursor: pointer;
 }
 
-.close-div{
+.close-div {
     width: 9%;
     height: 7%;
     background-color: rgb(248, 242, 242);
@@ -108,15 +220,47 @@ const changeCase = computed(()=> inputValue.value = inputValue.value.toLowerCase
     left: 90%;
     top: 3%;
     border-radius: 5px;
+    z-index: 10;
 }
 
-.close-div img{
+.close-div img {
     width: 100%;
     height: 100%;
 }
 
-.close-div:hover{
+.close-div:hover {
     background-color: rgb(190, 169, 169);
     cursor: pointer;
+}
+.success-div{
+    position: absolute;
+    display: flex;
+    background-color: white;
+    width: 80%;
+    height: 20%;
+    color: dark gray;
+    justify-content: center;
+    padding-top: 5%;
+    border-radius: 5px;
+    z-index: 10;
+    background-color: lightgreen;
+}
+.success-div .p1{
+    font-size: 20px;
+}
+.success-div .p2{
+    position: absolute;
+    top: 46%;
+    font-size: 17.5px;
+}
+.success_img{
+    width: 6.5%;
+    height: 26%;
+    margin-left: 0.4%;
+    margin-top: 1%;
+}
+.success_img img{
+    width: 100%;
+    height: 100%;
 }
 </style>

@@ -17,7 +17,7 @@ defineProps({
 <template>
     <div>
         <Teleport to="body">
-            <contactAdmin v-if="showModal" @closeModal="showModal=false"/>
+            <contactAdmin v-if="showModal" @closeModal="showModal = false" />
         </Teleport>
         <div class="card-display">
             <h2 id="title">{{ nameData }}</h2>
@@ -27,7 +27,7 @@ defineProps({
             <div class="house-info">
                 <p>{{ paragraphData }}<span id="more-info"><a href="#1" id="more-info-link">...more</a></span></p>
                 <h2 id="price">Price <span id="kash-price">KES. {{ priceData }}</span></h2>
-                <button @click="showModal=true">Contact admin</button>
+                <button @click="showModal = true">Contact admin</button>
                 <a href="#" id="house-info">See also related houses</a>
             </div>
         </div>
@@ -45,11 +45,13 @@ defineProps({
 .image-display {
     width: 100%;
 }
+
 img {
     width: 100%;
     height: 100%;
     max-height: 430px;
 }
+
 #title {
     margin-left: 10px;
     font-size: 30px;
@@ -118,5 +120,5 @@ button:hover {
     font-family: quicksand;
     font-weight: 510;
     font-size: 19px;
-} 
+}
 </style>
