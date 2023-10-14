@@ -7,9 +7,12 @@ const username = ref("")
 const email = ref("")
 const phone = ref("")
 const message = ref("")
-const sendbackMsg = ref("")
+const sendbackMsg1 = ref("")
+const sendbackMsg2 = ref("")
 const errorMsg = ref("")
 const hideMsg = ref(false)
+const sendbackImg = ref("")
+const msgColor = ref({color: ''})
 const formStyles = ref({opacity: 1, pointerEvents: ''})
 const emit = defineEmits(['closeModal'])
 
@@ -33,7 +36,7 @@ function postData(){
                 body: JSON.stringify(userData),
             })
             .then(response => response.json())
-            .then(data => sendSuccess(data.returnMsg))
+            .then(data => sendSuccess(data.returnMsg1,data.returnImg,data.returnMsg2,data.returnColor))
         }
         else{
             showMsg.value = true
@@ -48,12 +51,15 @@ function postData(){
         }, 10000);
     }
 }
-function sendSuccess(feedbackMsg){
+function sendSuccess(feedbackMsg1,feedbackImg,feedbackMsg2,feebackColor){
     username.value = '';
     email.value = '';
     phone.value = '';
     message.value = '';
-    sendbackMsg.value = feedbackMsg;
+    sendbackMsg1.value = feedbackMsg1;
+    sendbackMsg2.value = feedbackMsg2;
+    sendbackImg.value = feedbackImg;
+    msgColor.value = {color: feebackColor}
     hideMsg.value = true;
     formStyles.value = {
         opacity: 0.98,
@@ -98,9 +104,9 @@ function handleInput(event) {
                     @focus="showDefaultMsg()" v-model="message" maxlength="250" @keyup.enter="postData()" required></textarea>
                 <button @click="postData()" id="sendBtn">SEND</button>
             </div>
-            <div class="success-div" v-show="hideMsg">
-                <p class="p1">{{sendbackMsg}}</p><span class="success_img"><img src="@/assets/images/success_img.png"></span>
-                <p class="p2">You will get a feedback after 24 hours</p>
+            <div class="success-div" :style="msgColor" v-show="hideMsg">
+                <p class="p1">{{sendbackMsg1}}</p><span class="success_img"><img :src="sendbackImg"></span>
+                <p class="p2">{{sendbackMsg2}}</p>
             </div>
         </div>
     </div>
@@ -225,7 +231,6 @@ function handleInput(event) {
     background-color: white;
     width: 80%;
     height: 21%;
-    color: dark gray;
     justify-content: center;
     padding-top: 5%;
     border-radius: 5px;
