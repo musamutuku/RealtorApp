@@ -1,33 +1,42 @@
 <script setup>
-import { ref, computed,onMounted } from 'vue';
+import { ref, computed} from 'vue';
 
 
 const showMsg = ref(false)
+const message = ref("")
 const username = ref("")
 const email = ref("")
 const phone = ref("")
-const message = ref("")
+const loadingMsg = ref(false)
+const hideWaitMsg = ref("SEND")
 const sendbackMsg1 = ref("")
 const sendbackMsg2 = ref("")
 const errorMsg = ref("")
 const hideMsg = ref(false)
 const sendbackImg = ref("")
-const msgColor = ref({color: ''})
-const formStyles = ref({opacity: 1, pointerEvents: ''})
+const msgColor = ref({ color: '' })
+const formStyles = ref({ opacity: 1, pointerEvents: '' })
 const emit = defineEmits(['closeModal'])
 
 const changeCase = computed(() => email.value = email.value.toLowerCase())
 
 
-function postData(){
+function postData() {
     const userData = {
         userName: username.value,
         userEmail: email.value,
         userPhone: phone.value,
         userMessage: message.value
     }
-    if (username.value!='' && email.value!='' && phone.value!='' && message.value!='') {
-        if(email.value.includes('@')){
+    if (username.value != '' && email.value != '' && phone.value != '' && message.value != '') {
+        if (email.value.includes('@')) {
+            hideWaitMsg.value = "";
+            loadingMsg.value = true;
+            formStyles.value = {
+                opacity: 0.98,
+                pointerEvents: 'none'
+            }
+
             fetch('http://127.0.0.1:3000/api/submit', {
                 method: 'POST',
                 headers: {
@@ -35,15 +44,48 @@ function postData(){
                 },
                 body: JSON.stringify(userData),
             })
-            .then(response => response.json())
-            .then(data => sendSuccess(data.returnMsg1,data.returnImg,data.returnMsg2,data.returnColor))
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error('Server Error');
+                    }
+                })
+                .then(data => sendSuccess(data.loadingMsg, data.returnMsg1, data.returnImg, data.returnMsg2, data.returnColor))
+                .catch(error => {
+                    console.error('Error:', error);
+                    setTimeout(() => {
+                        loadingMsg.value = false;
+                        hideWaitMsg.value = 'SEND'
+                        username.value = '';
+                        email.value = '';
+                        phone.value = '';
+                        message.value = '';
+                        sendbackMsg1.value = 'Server error!';
+                        sendbackMsg2.value = 'Checkout your connection or try again later';
+                        sendbackImg.value = 'src/assets/images/error_img.png';
+                        msgColor.value = { color: 'brown' }
+                        hideMsg.value = true;
+                        formStyles.value = {
+                            opacity: 0.98,
+                            pointerEvents: 'none'
+                        }
+                        setTimeout(() => {
+                            hideMsg.value = false;
+                            formStyles.value = {
+                                opacity: 1,
+                                pointerEvents: ''
+                            }
+                        }, 8000);
+                    }, 10000);
+                })
         }
-        else{
+        else {
             showMsg.value = true
             errorMsg.value = "Please enter a valid email!"
         }
     }
-    else{
+    else {
         showMsg.value = true
         errorMsg.value = "Please fill all the fields!"
         setTimeout(() => {
@@ -51,7 +93,9 @@ function postData(){
         }, 10000);
     }
 }
-function sendSuccess(feedbackMsg1,feedbackImg,feedbackMsg2,feebackColor){
+function sendSuccess(loadMsg, feedbackMsg1, feedbackImg, feedbackMsg2, feebackColor) {
+    loadingMsg.value = loadMsg;
+    hideWaitMsg.value = 'SEND'
     username.value = '';
     email.value = '';
     phone.value = '';
@@ -59,7 +103,7 @@ function sendSuccess(feedbackMsg1,feedbackImg,feedbackMsg2,feebackColor){
     sendbackMsg1.value = feedbackMsg1;
     sendbackMsg2.value = feedbackMsg2;
     sendbackImg.value = feedbackImg;
-    msgColor.value = {color: feebackColor}
+    msgColor.value = { color: feebackColor }
     hideMsg.value = true;
     formStyles.value = {
         opacity: 0.98,
@@ -70,43 +114,48 @@ function sendSuccess(feedbackMsg1,feedbackImg,feedbackMsg2,feebackColor){
     }, 10000);
 }
 
-function showDefaultMsg(){
+function showDefaultMsg() {
     showMsg.value = false;
-    if(message.value == ''){
+    if (message.value == '') {
         message.value = 'I am interested in buying this house';
-    }   
+    }
 }
 
 function handleInput(event) {
-      // Get the input value and remove any non-numeric characters
-      let inputValue = event.target.value.replace(/\D/g, '');
+    // Get the input value and remove any non-numeric characters
+    let inputValue = event.target.value.replace(/\D/g, '');
 
-      // If the input starts with '0', retain it
-      if (inputValue.startsWith('0')) {
+    // If the input starts with '0', retain it
+    if (inputValue.startsWith('0')) {
         phone.value = '0' + inputValue.slice(1);
-      } else {
+    } else {
         phone.value = inputValue;
-      }
     }
+}
 
 </script>
 
 <template>
     <div class="contact-container">
         <div class="contact-div">
-            <p class="error-msg" v-show="showMsg">{{errorMsg}}</p>
+            <p class="error-msg" v-show="showMsg">{{ errorMsg }}</p>
             <div class="close-div" @click="$emit('closeModal')" title="Close"><img src="@/assets/images/close1.png"></div>
             <div class="contactForm" :style="formStyles">
-                <input type="text" placeholder="Full name*" v-model="username" @focus="showMsg=false" maxlength="50" required>
-                <input type="email" placeholder="Email address*" @blur="changeCase" v-model="email" @focus="showMsg=false" maxlength="50" required>
-                <input placeholder="Phone number*" @input="handleInput($event)" maxlength="12" v-model="phone" @focus="showMsg=false" required>
+                <input type="text" placeholder="Full name*" v-model="username" @focus="showMsg = false" maxlength="50"
+                    required>
+                <input type="email" placeholder="Email address*" @blur="changeCase" v-model="email" @focus="showMsg = false"
+                    maxlength="50" required>
+                <input placeholder="Phone number*" @input="handleInput($event)" maxlength="12" v-model="phone"
+                    @focus="showMsg = false" required>
                 <textarea name="" id="my-description" cols="" rows="" placeholder="How can admin help you?"
-                    @focus="showDefaultMsg()" v-model="message" maxlength="250" @keyup.enter="postData()" required></textarea>
-                <button @click="postData()" id="sendBtn">SEND</button>
+                    @focus="showDefaultMsg()" v-model="message" maxlength="250" @keyup.enter="postData()"
+                    required></textarea>
+                <button @click="postData()" id="sendBtn" :style="btnBgColor">{{ hideWaitMsg }}<span v-show="loadingMsg"
+                        class="loadingMsg"><img src="@/assets/images/waiting_img.png">Please wait...</span></button>
             </div>
             <div class="success-div" :style="msgColor" v-show="hideMsg">
-                <p class="p1">{{sendbackMsg1}}</p><span class="success_img"><img :src="sendbackImg"></span>
-                <p class="p2">{{sendbackMsg2}}</p>
+                <p class="p1">{{ sendbackMsg1 }}</p><span class="success_img"><img :src="sendbackImg"></span>
+                <p class="p2">{{ sendbackMsg2 }}</p>
             </div>
         </div>
     </div>
@@ -132,7 +181,8 @@ function handleInput(event) {
     align-items: center;
     position: relative;
 }
-.error-msg{
+
+.error-msg {
     background-color: rgba(255, 230, 230);
     color: #980200;
     position: absolute;
@@ -145,6 +195,7 @@ function handleInput(event) {
     padding-top: 5px;
     padding-left: 6px;
 }
+
 .contactForm {
     align-items: center;
     width: 90%;
@@ -188,7 +239,6 @@ function handleInput(event) {
 
 #sendBtn {
     border: 1px solid green;
-    background-color: #006400c0;
     color: white;
     font-family: quicksand;
     font-size: 24px;
@@ -196,7 +246,8 @@ function handleInput(event) {
     letter-spacing: 1px;
     margin-bottom: 3%;
     width: 93%;
-    height: 12%;
+    background-color: #006400c0;
+    height: 13%;
     border-radius: 5px;
 }
 
@@ -225,7 +276,8 @@ function handleInput(event) {
     background-color: rgb(190, 169, 169);
     cursor: pointer;
 }
-.success-div{
+
+.success-div {
     position: absolute;
     display: flex;
     background-color: white;
@@ -235,24 +287,53 @@ function handleInput(event) {
     padding-top: 5%;
     border-radius: 5px;
     z-index: 10;
-    background-color: lightgreen;
+    background-color: rgb(172, 238, 172);
 }
-.success-div .p1{
+
+.success-div .p1 {
     font-size: 20px;
 }
-.success-div .p2{
+
+.success-div .p2 {
     position: absolute;
     top: 46%;
     font-size: 17.5px;
+    text-align: center;
 }
-.success_img{
+
+.success_img {
     width: 6.6%;
     height: 26%;
     margin-left: 0.4%;
     margin-top: 1.3%;
 }
-.success_img img{
+
+.success_img img {
     width: 100%;
     height: 100%;
+}
+
+.loadingMsg {
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+    font-size: 22px;
+    justify-content: center;
+}
+
+.loadingMsg img {
+    width: 10%;
+    height: 12%;
+    animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 </style>
