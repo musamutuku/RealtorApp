@@ -1,5 +1,8 @@
 <script setup>
-import { ref, computed} from 'vue';
+import { ref, computed, onMounted} from 'vue';
+const props = defineProps({
+    houseID: Number
+})
 
 
 const showMsg = ref(false)
@@ -22,7 +25,9 @@ const changeCase = computed(() => email.value = email.value.toLowerCase())
 
 
 function postData() {
+    console.log(props.houseID);
     const userData = {
+        id: props.houseID,
         userName: username.value,
         userEmail: email.value,
         userPhone: phone.value,
@@ -132,8 +137,8 @@ function handleInput(event) {
         phone.value = inputValue;
     }
 }
-
 </script>
+
 
 <template>
     <div class="contact-container">
@@ -161,7 +166,7 @@ function handleInput(event) {
     </div>
 </template>
 
-<style scoped>
+<style scoped>  
 .contact-container {
     width: 100%;
     height: 100vh;

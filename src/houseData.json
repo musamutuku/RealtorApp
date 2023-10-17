@@ -2,130 +2,130 @@
     "apartments": [
       {
         "id": "house1",
-        "name": "Low-Rise Apartment",
-        "imageSrc": "src/assets/images/apartments/house1.jpg",
-        "paragraph": "A low-rise apartment building is a shorter building, typically consisting of one to three floors with fewer apartment units on each floor.",
+        "housename": "Low-Rise Apartment",
+        "imagesrc": "src/assets/images/apartments/house1.jpg",
+        "description": "A low-rise apartment building is a shorter building, typically consisting of one to three floors with fewer apartment units on each floor.",
         "price": "10.5M"
     },
     {
         "id": "house2",
-        "name": "American-New Apartment",
-        "imageSrc": "src/assets/images/apartments/house2.jpg",
-        "paragraph": "An american-new apartment building is......................................................................................................",
+        "housename": "American-New Apartment",
+        "imagesrc": "src/assets/images/apartments/house2.jpg",
+        "description": "An american-new apartment building is......................................................................................................",
         "price": "10.3M"
       },
       {
         "id": "house3",
-        "name": "Home-Living Apartment",
-        "imageSrc": "src/assets/images/apartments/house3.jpg",
-        "paragraph": "A home-living apartment building is.......................................................................................................",
+        "housename": "Home-Living Apartment",
+        "imagesrc": "src/assets/images/apartments/house3.jpg",
+        "description": "A home-living apartment building is.......................................................................................................",
         "price": "10.4M"
       },
       {
         "id": "house4",
-        "name": "Luxury Apartment",
-        "imageSrc": "src/assets/images/apartments/house4.jpg",
-        "paragraph": "An luxury apartment building is............................................................................................................",
+        "housename": "Luxury Apartment",
+        "imagesrc": "src/assets/images/apartments/house4.jpg",
+        "description": "An luxury apartment building is............................................................................................................",
         "price": "11.3M"
       },
       {
         "id": "house5",
-        "name": "Mission Apartment",
-        "imageSrc": "src/assets/images/apartments/house5.jpeg",
-        "paragraph": "A mission apartment building is.............................................................................................................",
+        "housename": "Mission Apartment",
+        "imagesrc": "src/assets/images/apartments/house5.jpeg",
+        "description": "A mission apartment building is.............................................................................................................",
         "price": "10.9M"
       },
       {
         "id": "house6",
-        "name": "Modern Apartment",
-        "imageSrc": "src/assets/images/apartments/house6.jpg",
-        "paragraph": "A modern apartment building is...............................................................................................................",
+        "housename": "Modern Apartment",
+        "imagesrc": "src/assets/images/apartments/house6.jpg",
+        "description": "A modern apartment building is...............................................................................................................",
         "price": "15.1M"
       },
       {
         "id": "house7",
-        "name": "Real-Estate Apartment",
-        "imageSrc": "src/assets/images/apartments/house7.jpg",
-        "paragraph": "A real estate apartment building is...........................................................................................................",
+        "housename": "Real-Estate Apartment",
+        "imagesrc": "src/assets/images/apartments/house7.jpg",
+        "description": "A real estate apartment building is...........................................................................................................",
         "price": "13.2M"
       },
       {
         "id": "house8",
-        "name": "Rental Apartment",
-        "imageSrc": "src/assets/images/apartments/house8.jpeg",
-        "paragraph": "A rental apartment building is..................................................................................................................",
+        "housename": "Rental Apartment",
+        "imagesrc": "src/assets/images/apartments/house8.jpeg",
+        "description": "A rental apartment building is..................................................................................................................",
         "price": "10.7M"
       },
       {
         "id": "house9",
-        "name": "Calgary Apartment",
-        "imageSrc": "src/assets/images/apartments/house9.jpg",
-        "paragraph": "An calgary apartment building is.................................................................................................................",
+        "housename": "Calgary Apartment",
+        "imagesrc": "src/assets/images/apartments/house9.jpg",
+        "description": "An calgary apartment building is.................................................................................................................",
         "price": "9.85M"
       }],
 
     "townhouses": [
       {
         "id": "house1",
-        "name": "Low-Rise Townhouse",
-        "imageSrc": "src/assets/images/apartments/house1.jpg",
-        "paragraph": "A low-rise apartment building is a shorter building, typically consisting of one to three floors with fewer apartment units on each floor.",
+        "housename": "Low-Rise Townhouse",
+        "imagesrc": "src/assets/images/apartments/house1.jpg",
+        "description": "A low-rise apartment building is a shorter building, typically consisting of one to three floors with fewer apartment units on each floor.",
         "price": "10.5M"
     },
     {
         "id": "house2",
-        "name": "American-New Townhouse",
-        "imageSrc": "src/assets/images/apartments/house2.jpg",
-        "paragraph": "An american-new apartment building is......................................................................................................",
+        "housename": "American-New Townhouse",
+        "imagesrc": "src/assets/images/apartments/house2.jpg",
+        "description": "An american-new apartment building is......................................................................................................",
         "price": "10.3M"
       },
       {
         "id": "house3",
-        "name": "Home-Living Townhouse",
-        "imageSrc": "src/assets/images/apartments/house3.jpg",
-        "paragraph": "A home-living apartment building is.......................................................................................................",
+        "housename": "Home-Living Townhouse",
+        "imagesrc": "src/assets/images/apartments/house3.jpg",
+        "description": "A home-living apartment building is.......................................................................................................",
         "price": "10.4M"
       },
       {
         "id": "house4",
-        "name": "Luxury Townhouse",
-        "imageSrc": "src/assets/images/apartments/house4.jpg",
-        "paragraph": "An luxury apartment building is............................................................................................................",
+        "housename": "Luxury Townhouse",
+        "imagesrc": "src/assets/images/apartments/house4.jpg",
+        "description": "An luxury apartment building is............................................................................................................",
         "price": "11.3M"
       },
       {
         "id": "house5",
-        "name": "Mission Townhouse",
-        "imageSrc": "src/assets/images/apartments/house5.jpeg",
-        "paragraph": "A mission apartment building is.............................................................................................................",
+        "housename": "Mission Townhouse",
+        "imagesrc": "src/assets/images/apartments/house5.jpeg",
+        "description": "A mission apartment building is.............................................................................................................",
         "price": "10.9M"
       },
       {
         "id": "house6",
-        "name": "Modern Townhouse",
-        "imageSrc": "src/assets/images/apartments/house6.jpg",
-        "paragraph": "A modern apartment building is...............................................................................................................",
+        "housename": "Modern Townhouse",
+        "imagesrc": "src/assets/images/apartments/house6.jpg",
+        "description": "A modern apartment building is...............................................................................................................",
         "price": "15.1M"
       },
       {
         "id": "house7",
-        "name": "Real-Estate Townhouse",
-        "imageSrc": "src/assets/images/apartments/house7.jpg",
-        "paragraph": "A real estate apartment building is...........................................................................................................",
+        "housename": "Real-Estate Townhouse",
+        "imagesrc": "src/assets/images/apartments/house7.jpg",
+        "description": "A real estate apartment building is...........................................................................................................",
         "price": "13.2M"
       },
       {
         "id": "house8",
-        "name": "Rental Townhouse",
-        "imageSrc": "src/assets/images/apartments/house8.jpeg",
-        "paragraph": "A rental apartment building is..................................................................................................................",
+        "housename": "Rental Townhouse",
+        "imagesrc": "src/assets/images/apartments/house8.jpeg",
+        "description": "A rental apartment building is..................................................................................................................",
         "price": "10.7M"
       },
       {
         "id": "house9",
-        "name": "Calgary Townhouse",
-        "imageSrc": "src/assets/images/apartments/house9.jpg",
-        "paragraph": "An calgary apartment building is.................................................................................................................",
+        "housename": "Calgary Townhouse",
+        "imagesrc": "src/assets/images/apartments/house9.jpg",
+        "description": "An calgary apartment building is.................................................................................................................",
         "price": "9.85M"
       }]
 

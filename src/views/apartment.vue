@@ -1,19 +1,33 @@
 <script setup>
-import data from '../houseData.json'
 import { ref } from 'vue'
 import { onMounted, watch } from 'vue';
 import apartmentSingle from '@/components/ApartmentSingle.vue';
-
 const findmatch = ref("")
 const noMatch = ref("")
-const userdata = ref(data)
-const paragraph = ref()
+const description = ref()
 const price = ref()
-const nameHouse = ref()
-const imageSrc = ref()
+const houseName = ref()
+const id = ref()
+const imagesrc = ref()
 const imgAlt = ref()
-const allData = ref(userdata.value.apartments)
 
+
+fetch('http://127.0.0.1:3000/api/data').then(response => response.json())
+.then(data => localStorage.setItem('houseData', JSON.stringify(data)));
+const savedData = JSON.parse(localStorage.getItem('houseData'));
+
+//adding data from table column to a list (testing)
+// fetch('http://127.0.0.1:3000/api/data2').then(response => response.json())
+// .then(data => localStorage.setItem('prices6', data))
+// .then(data => columnData.value = data)
+// const savedData6 = localStorage.getItem('prices6')
+// columnData.value = savedData6;
+
+
+
+const finaldata = {"apartments": savedData}
+const userdata = ref(finaldata)
+const allData = ref(userdata.value.apartments)
 
 watch(findmatch, () => {
     if (findmatch.value == "") {
@@ -22,7 +36,7 @@ watch(findmatch, () => {
     }
 })
 function searchHouse() {
-    userdata.value = allData.value.filter(user => user.name.toLowerCase().includes(findmatch.value.toLowerCase()));
+    userdata.value = allData.value.filter(user => user.houseName.toLowerCase().includes(findmatch.value.toLowerCase()));
     if(userdata.value  == ""){
         noMatch.value = "No any match!"
     }
@@ -33,10 +47,11 @@ onMounted(() => {
     userdata.value = allData.value
 });
 function getDetails(house) {
-    paragraph.value = house.paragraph
+    description.value = house.description
     price.value = house.price
-    nameHouse.value = house.name
-    imageSrc.value = house.imageSrc
+    houseName.value = house.houseName
+    id.value = house.id
+    imagesrc.value = house.imagesrc
     imgAlt.value = house.imgAlt
 }
 
@@ -70,15 +85,15 @@ function getRadoms() {
                     <div class="card-container" :id="user.id" :style="{ backgroundColor: getRadoms() }"
                         @click="getDetails(user)">
                         <div class="image">
-                            <img :src="user.imageSrc">
+                            <img :src="user.imagesrc">
                         </div>
-                        <h2 class="house-name">{{ user.name }}</h2>
+                        <h2 class="house-name">{{ user.houseName }}</h2>
                     </div>
                 </div>
             </div>
         </div>
         <div class="small-card">
-            <apartmentSingle :price-data="price" :name-data="nameHouse" :paragraph-data="paragraph" :image-data="imageSrc"
+            <apartmentSingle :id-data="id" :price-data="price" :houseName-data="houseName" :description-data="description" :image-data="imagesrc"
                 @showModal="" />
         </div>
     </div>

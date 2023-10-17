@@ -4,6 +4,7 @@ import townhouseView from '../views/townhouse.vue'
 import mobilehomeView from '../views/mobilehome.vue'
 import farmhomeView from '../views/farmhome.vue'
 import ranchhouseView from '../views/ranchhouse.vue'
+import NotFound from '../views/notFound.vue'
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -33,6 +34,11 @@ const router = createRouter({
             name: "ranchhouse",
             component: ranchhouseView
         },
+        { 
+            path: '/:pathMatch(.*)*', 
+            name: 'NotFound', 
+            component: NotFound 
+        }
     ]
 })
 export default router

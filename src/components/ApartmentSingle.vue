@@ -4,8 +4,9 @@ import contactAdmin from './contactAdmin.vue';
 const showModal = ref(false);
 
 defineProps({
-    paragraphData: String,
-    nameData: String,
+    descriptionData: String,
+    idData: Number,
+    houseNameData: String,
     priceData: String,
     imageData: String,
     imgAlt: String
@@ -17,15 +18,15 @@ defineProps({
 <template>
     <div>
         <Teleport to="body">
-            <contactAdmin v-if="showModal" @closeModal="showModal = false" />
+            <contactAdmin :houseID="idData" v-if="showModal" @closeModal="showModal = false" />
         </Teleport>
         <div class="card-display">
-            <h2 id="title">{{ nameData }}</h2>
+            <h2 id="title">{{ houseNameData }}</h2>
             <div class="image-display">
                 <img :src="imageData" :alt="imgAlt">
             </div>
             <div class="house-info">
-                <p>{{ paragraphData }}<span id="more-info"><a href="#1" id="more-info-link">...more</a></span></p>
+                <p>{{ descriptionData }}<span id="more-info"><a href="#1" id="more-info-link">...more</a></span></p>
                 <h2 id="price">Price <span id="kash-price">KES. {{ priceData }}</span></h2>
                 <button @click="showModal = true">Contact admin</button>
                 <a href="#" id="house-info">See also related houses</a>
