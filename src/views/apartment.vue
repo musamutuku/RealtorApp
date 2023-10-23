@@ -109,6 +109,7 @@ function getRadoms() {
 
 .minor-div {
     width: 50%;
+    background-color: blue;
 }
 
 .search-div {
