@@ -108,6 +108,7 @@ function getRadoms() {
 }
 
 .minor-div {
+    background-color: violet;
     width: 50%;
 }
 
