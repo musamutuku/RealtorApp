@@ -1,5 +1,6 @@
 <script setup>
 import navigation from './components/Navigation.vue'
+import Admin from './components/admin.vue';
 
 </script>
 
@@ -7,6 +8,7 @@ import navigation from './components/Navigation.vue'
   <main>
     <div>
       <navigation style="position: absolute;" />
+      <!-- <Admin/> -->
     </div>
   </main>
 </template>

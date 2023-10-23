@@ -13,7 +13,7 @@ const imgAlt = ref()
 
 
 fetch('http://127.0.0.1:3000/api/data').then(response => response.json())
-.then(data => localStorage.setItem('houseData', JSON.stringify(data)));
+    .then(data => localStorage.setItem('houseData', JSON.stringify(data)));
 const savedData = JSON.parse(localStorage.getItem('houseData'));
 
 //adding data from table column to a list (testing)
@@ -25,7 +25,7 @@ const savedData = JSON.parse(localStorage.getItem('houseData'));
 
 
 
-const finaldata = {"apartments": savedData}
+const finaldata = { "apartments": savedData }
 const userdata = ref(finaldata)
 const allData = ref(userdata.value.apartments)
 
@@ -37,7 +37,7 @@ watch(findmatch, () => {
 })
 function searchHouse() {
     userdata.value = allData.value.filter(user => user.houseName.toLowerCase().includes(findmatch.value.toLowerCase()));
-    if(userdata.value  == ""){
+    if (userdata.value == "") {
         noMatch.value = "No any match!"
     }
 }
@@ -93,8 +93,8 @@ function getRadoms() {
             </div>
         </div>
         <div class="small-card">
-            <apartmentSingle :id-data="id" :price-data="price" :houseName-data="houseName" :description-data="description" :image-data="imagesrc"
-                @showModal="" />
+            <apartmentSingle :id-data="id" :price-data="price" :houseName-data="houseName" :description-data="description"
+                :image-data="imagesrc" @showModal="" />
         </div>
     </div>
 </template>
@@ -109,6 +109,7 @@ function getRadoms() {
 
 .minor-div {
     width: 50%;
+    background-color: green;
 }
 
 .search-div {
@@ -150,7 +151,8 @@ function getRadoms() {
     height: 25px;
     margin-top: 5.9%;
 }
-.noMatch{
+
+.noMatch {
     font-size: 16px;
     color: brown;
     margin-left: 30%;
@@ -192,4 +194,5 @@ function getRadoms() {
 img {
     width: 100%;
     height: 100%;
-}</style>
+}
+</style>

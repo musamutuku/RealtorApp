@@ -2,7 +2,6 @@
 import { ref } from 'vue';
 import contactAdmin from './contactAdmin.vue';
 const showModal = ref(false);
-
 defineProps({
     descriptionData: String,
     idData: Number,
@@ -29,7 +28,7 @@ defineProps({
                 <p>{{ descriptionData }}<span id="more-info"><a href="#1" id="more-info-link">...more</a></span></p>
                 <h2 id="price">Price <span id="kash-price">KES. {{ priceData }}</span></h2>
                 <button @click="showModal = true">Contact admin</button>
-                <a href="#" id="house-info">See also related houses</a>
+                <a :href="url" id="house-info"> See also related houses</a>
             </div>
         </div>
     </div>

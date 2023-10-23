@@ -1,9 +1,8 @@
 <script setup>
-import { ref, computed, onMounted} from 'vue';
+import { ref, computed, onMounted } from 'vue';
 const props = defineProps({
     houseID: Number
 })
-
 
 const showMsg = ref(false)
 const message = ref("")
@@ -166,179 +165,178 @@ function handleInput(event) {
     </div>
 </template>
 
-<style scoped>  
-.contact-container {
-    width: 100%;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    background-color: rgba(0, 0, 0, 0.78);
-    position: absolute;
-    z-index: 10;
-}
+<style scoped>  .contact-container {
+      width: 100%;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      background-color: rgba(0, 0, 0, 0.78);
+      position: absolute;
+      z-index: 10;
+  }
 
-.contact-div {
-    display: flex;
-    width: 28%;
-    height: 75%;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
+  .contact-div {
+      display: flex;
+      width: 28%;
+      height: 75%;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+  }
 
-.error-msg {
-    background-color: rgba(255, 230, 230);
-    color: #980200;
-    position: absolute;
-    width: 83%;
-    height: 8%;
-    top: -4%;
-    left: 5%;
-    border-radius: 5px;
-    font-size: 17px;
-    padding-top: 5px;
-    padding-left: 6px;
-}
+  .error-msg {
+      background-color: rgba(255, 230, 230);
+      color: #980200;
+      position: absolute;
+      width: 83%;
+      height: 8%;
+      top: -4%;
+      left: 5%;
+      border-radius: 5px;
+      font-size: 17px;
+      padding-top: 5px;
+      padding-left: 6px;
+  }
 
-.contactForm {
-    align-items: center;
-    width: 90%;
-    height: 86%;
-    display: flex;
-    flex-direction: column;
-    gap: 2em;
-    padding-top: 4.8%;
-    border-radius: 8px;
-    background-color: white;
-    border: 1px solid rgba(212, 208, 208, 0.9);
+  .contactForm {
+      align-items: center;
+      width: 90%;
+      height: 86%;
+      display: flex;
+      flex-direction: column;
+      gap: 2em;
+      padding-top: 4.8%;
+      border-radius: 8px;
+      background-color: white;
+      border: 1px solid rgba(212, 208, 208, 0.9);
 
-}
+  }
 
-.contactForm input {
-    width: 93%;
-    height: 14%;
-    border-radius: 8px;
-    outline: none;
-    border: 1px solid rgb(155, 62, 62);
-    font-family: quicksand;
-    font-size: 22px;
-}
+  .contactForm input {
+      width: 93%;
+      height: 14%;
+      border-radius: 8px;
+      outline: none;
+      border: 1px solid rgb(155, 62, 62);
+      font-family: quicksand;
+      font-size: 22px;
+  }
 
-.contactForm input::placeholder {
-    font-size: 20px;
-    margin-left: 10px;
+  .contactForm input::placeholder {
+      font-size: 20px;
+      margin-left: 10px;
 
 
-}
+  }
 
-#my-description {
-    font-family: quicksand;
-    font-size: 20px;
-    border-radius: 5px;
-    border: 1px solid rgb(155, 62, 62);
-    outline: none;
-    height: 33%;
-    width: 93%;
-}
+  #my-description {
+      font-family: quicksand;
+      font-size: 20px;
+      border-radius: 5px;
+      border: 1px solid rgb(155, 62, 62);
+      outline: none;
+      height: 33%;
+      width: 93%;
+  }
 
-#sendBtn {
-    border: 1px solid green;
-    color: white;
-    font-family: quicksand;
-    font-size: 24px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    margin-bottom: 3%;
-    width: 93%;
-    background-color: #006400c0;
-    height: 13%;
-    border-radius: 5px;
-}
+  #sendBtn {
+      border: 1px solid green;
+      color: white;
+      font-family: quicksand;
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin-bottom: 3%;
+      width: 93%;
+      background-color: #006400c0;
+      height: 13%;
+      border-radius: 5px;
+  }
 
-#sendBtn:hover {
-    background-color: darkgreen;
-    cursor: pointer;
-}
+  #sendBtn:hover {
+      background-color: darkgreen;
+      cursor: pointer;
+  }
 
-.close-div {
-    width: 9%;
-    height: 7%;
-    background-color: rgb(248, 242, 242);
-    position: absolute;
-    left: 90%;
-    top: 3%;
-    border-radius: 5px;
-    z-index: 10;
-}
+  .close-div {
+      width: 9%;
+      height: 7%;
+      background-color: rgb(248, 242, 242);
+      position: absolute;
+      left: 90%;
+      top: 3%;
+      border-radius: 5px;
+      z-index: 10;
+  }
 
-.close-div img {
-    width: 100%;
-    height: 100%;
-}
+  .close-div img {
+      width: 100%;
+      height: 100%;
+  }
 
-.close-div:hover {
-    background-color: rgb(190, 169, 169);
-    cursor: pointer;
-}
+  .close-div:hover {
+      background-color: rgb(190, 169, 169);
+      cursor: pointer;
+  }
 
-.success-div {
-    position: absolute;
-    display: flex;
-    background-color: white;
-    width: 80%;
-    height: 21%;
-    justify-content: center;
-    padding-top: 5%;
-    border-radius: 5px;
-    z-index: 10;
-    background-color: rgb(172, 238, 172);
-}
+  .success-div {
+      position: absolute;
+      display: flex;
+      background-color: white;
+      width: 80%;
+      height: 21%;
+      justify-content: center;
+      padding-top: 5%;
+      border-radius: 5px;
+      z-index: 10;
+      background-color: rgb(172, 238, 172);
+  }
 
-.success-div .p1 {
-    font-size: 20px;
-}
+  .success-div .p1 {
+      font-size: 20px;
+  }
 
-.success-div .p2 {
-    position: absolute;
-    top: 46%;
-    font-size: 17.5px;
-    text-align: center;
-}
+  .success-div .p2 {
+      position: absolute;
+      top: 46%;
+      font-size: 17.5px;
+      text-align: center;
+  }
 
-.success_img {
-    width: 6.6%;
-    height: 26%;
-    margin-left: 0.4%;
-    margin-top: 1.3%;
-}
+  .success_img {
+      width: 6.6%;
+      height: 26%;
+      margin-left: 0.4%;
+      margin-top: 1.3%;
+  }
 
-.success_img img {
-    width: 100%;
-    height: 100%;
-}
+  .success_img img {
+      width: 100%;
+      height: 100%;
+  }
 
-.loadingMsg {
-    display: flex;
-    align-items: center;
-    gap: 0.4em;
-    font-size: 22px;
-    justify-content: center;
-}
+  .loadingMsg {
+      display: flex;
+      align-items: center;
+      gap: 0.4em;
+      font-size: 22px;
+      justify-content: center;
+  }
 
-.loadingMsg img {
-    width: 10%;
-    height: 12%;
-    animation: rotate 2s linear infinite;
-}
+  .loadingMsg img {
+      width: 10%;
+      height: 12%;
+      animation: rotate 2s linear infinite;
+  }
 
-@keyframes rotate {
-    0% {
-        transform: rotate(0deg);
-    }
+  @keyframes rotate {
+      0% {
+          transform: rotate(0deg);
+      }
 
-    100% {
-        transform: rotate(360deg);
-    }
-}
+      100% {
+          transform: rotate(360deg);
+      }
+  }
 </style>
