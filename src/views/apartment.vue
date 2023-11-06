@@ -36,7 +36,7 @@ watch(findmatch, () => {
     }
 })
 function searchHouse() {
-    userdata.value = allData.value.filter(user => user.houseName.toLowerCase().includes(findmatch.value.toLowerCase()));
+    userdata.value = allData.value.filter(user => user.housename.toLowerCase().includes(findmatch.value.toLowerCase()));
     if(userdata.value  == ""){
         noMatch.value = "No any match!"
     }
@@ -49,7 +49,7 @@ onMounted(() => {
 function getDetails(house) {
     description.value = house.description
     price.value = house.price
-    houseName.value = house.houseName
+    houseName.value = house.housename
     id.value = house.id
     imagesrc.value = house.imagesrc
     imgAlt.value = house.imgAlt
@@ -76,7 +76,7 @@ function getRadoms() {
     <div class="main-div">
         <div class="minor-div">
             <div class="search-div">
-                <input type="text" placeholder="Search apartment..." v-model.trim="findmatch" @keyup.enter="searchHouse()">
+                <input type="text" placeholder="Search..." v-model.trim="findmatch" @keyup.enter="searchHouse()">
                 <div class="searchImg-div" @click="searchHouse()"><img src="@/assets/images/search.png"></div>
             </div>
             <span class="noMatch">{{ noMatch }}</span>
@@ -87,7 +87,7 @@ function getRadoms() {
                         <div class="image">
                             <img :src="user.imagesrc">
                         </div>
-                        <h2 class="house-name">{{ user.houseName }}</h2>
+                        <h2 class="house-name">{{ user.housename }}</h2>
                     </div>
                 </div>
             </div>
@@ -96,13 +96,14 @@ function getRadoms() {
             <apartmentSingle :id-data="id" :price-data="price" :houseName-data="houseName" :description-data="description" :image-data="imagesrc"
                 @showModal="" />
         </div>
+       <div class="footer"><p>Copyright © 2023. Artemis Limited. All rights reserved.</p></div>
     </div>
 </template>
  
 <style scoped>
 .main-div {
     display: flex;
-    width: 88vw;
+    width: 87vw;
     height: 98vh;
     margin-left: 1%;
 }
@@ -115,11 +116,12 @@ function getRadoms() {
     display: flex;
     border: 1px solid gray;
     width: 40%;
-    height: 4.9%;
+    min-width: 220px;
+    height: 4.7%;
     background-color: rgb(250, 247, 246);
     border-radius: 20px;
     margin: auto;
-    margin-top: 3%;
+    margin-top: 28px;
 }
 
 .search-div input {
@@ -160,15 +162,16 @@ function getRadoms() {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    gap: 1.5em;
-    align-items: center;
+    gap: 1.2em;
     border-top: 1px solid rgb(231, 235, 235);
+    overflow-x: hidden;
 }
 
 .card-container {
     width: 210px;
     height: 195px;
     overflow-y: hidden;
+    
 }
 
 .card-container:hover {
@@ -192,4 +195,12 @@ function getRadoms() {
 img {
     width: 100%;
     height: 100%;
-}</style>
+}
+.footer{
+    position: absolute;
+    top: 105%;
+    left: 40%;
+    font-size: 16px;
+    line-height: 50px;
+}
+</style>
