@@ -1,5 +1,6 @@
 <script setup>
-import { ref, computed, onMounted} from 'vue';
+import { ref, computed } from 'vue';
+
 const props = defineProps({
     houseID: Number
 })
@@ -19,13 +20,13 @@ const hideMsg = ref(false)
 const sendbackImg = ref("")
 const msgColor = ref({ color: '' })
 const formStyles = ref({ opacity: 1, pointerEvents: '' })
+const clickable = ref({pointerEvents: ''})
 const emit = defineEmits(['closeModal'])
 
 const changeCase = computed(() => email.value = email.value.toLowerCase())
 
 
 function postData() {
-    console.log(props.houseID);
     const userData = {
         id: props.houseID,
         userName: username.value,
@@ -75,6 +76,9 @@ function postData() {
                             opacity: 0.98,
                             pointerEvents: 'none'
                         }
+                        clickable.value = {
+                            pointerEvents: 'all'
+                        }
                         setTimeout(() => {
                             hideMsg.value = false;
                             formStyles.value = {
@@ -114,6 +118,9 @@ function sendSuccess(loadMsg, feedbackMsg1, feedbackImg, feedbackMsg2, feebackCo
         opacity: 0.98,
         pointerEvents: 'none'
     }
+    clickable.value = {
+        pointerEvents: 'all'
+    }
     setTimeout(() => {
         emit('closeModal')
     }, 10000);
@@ -144,8 +151,8 @@ function handleInput(event) {
     <div class="contact-container">
         <div class="contact-div">
             <p class="error-msg" v-show="showMsg">{{ errorMsg }}</p>
-            <div class="close-div" @click="$emit('closeModal')" title="Close"><img src="@/assets/images/close1.png"></div>
             <div class="contactForm" :style="formStyles">
+                <div class="close-div" @click="$emit('closeModal')" title="Close" :style="clickable"><img src="@/assets/images/close1.png"></div>
                 <input type="text" placeholder="Full name*" v-model="username" @focus="showMsg = false" maxlength="50"
                     required>
                 <input type="email" placeholder="Email address*" @blur="changeCase" v-model="email" @focus="showMsg = false"
@@ -169,7 +176,7 @@ function handleInput(event) {
 <style scoped>  
 .contact-container {
     width: 100%;
-    height: 100vh;
+    height: 110%;
     justify-content: center;
     align-items: center;
     display: flex;
@@ -181,7 +188,7 @@ function handleInput(event) {
 .contact-div {
     display: flex;
     width: 28%;
-    height: 75%;
+    height: 71%;
     justify-content: center;
     align-items: center;
     position: relative;
@@ -191,10 +198,10 @@ function handleInput(event) {
     background-color: rgba(255, 230, 230);
     color: #980200;
     position: absolute;
-    width: 83%;
+    width: 84%;
+    min-width: 250px;
     height: 8%;
     top: -4%;
-    left: 5%;
     border-radius: 5px;
     font-size: 17px;
     padding-top: 5px;
@@ -204,11 +211,12 @@ function handleInput(event) {
 .contactForm {
     align-items: center;
     width: 90%;
-    height: 86%;
+    min-width: 350px;
+    height: 90%;
     display: flex;
     flex-direction: column;
     gap: 2em;
-    padding-top: 4.8%;
+    padding-top: 1%;
     border-radius: 8px;
     background-color: white;
     border: 1px solid rgba(212, 208, 208, 0.9);
@@ -262,14 +270,23 @@ function handleInput(event) {
 }
 
 .close-div {
-    width: 9%;
+    /* width: 9%;
+    min-width: 30px;
     height: 7%;
-    background-color: rgb(248, 242, 242);
     position: absolute;
-    left: 90%;
-    top: 3%;
+    right: 0%;
+    margin-left: auto;
+    top: 3%; */
+    /* background-color: rgb(248, 242, 242); */
+    margin-left: auto;
+    /* margin-top: -24px; */
+    margin-bottom: -15px;
     border-radius: 5px;
+    /* padding-top: 2px; */
     z-index: 10;
+    width: 7.5%;
+    padding-right: 5px;
+    height: 4.5%;
 }
 
 .close-div img {
@@ -285,7 +302,6 @@ function handleInput(event) {
 .success-div {
     position: absolute;
     display: flex;
-    background-color: white;
     width: 80%;
     height: 21%;
     justify-content: center;
