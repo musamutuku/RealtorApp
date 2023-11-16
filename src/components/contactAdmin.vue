@@ -270,19 +270,9 @@ function handleInput(event) {
 }
 
 .close-div {
-    /* width: 9%;
-    min-width: 30px;
-    height: 7%;
-    position: absolute;
-    right: 0%;
     margin-left: auto;
-    top: 3%; */
-    /* background-color: rgb(248, 242, 242); */
-    margin-left: auto;
-    /* margin-top: -24px; */
     margin-bottom: -15px;
     border-radius: 5px;
-    /* padding-top: 2px; */
     z-index: 10;
     width: 7.5%;
     padding-right: 5px;

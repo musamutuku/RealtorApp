@@ -157,7 +157,9 @@ function getRadoms() {
     height: 90%;
     gap: 1.2em;
     border-top: 1px solid rgb(231, 235, 235);
+    max-height: 622px;
     overflow-x: hidden;
+    border-bottom: 1px solid rgb(231, 235, 235);
 }
 
 .card-container {

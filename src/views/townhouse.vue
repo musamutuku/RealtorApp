@@ -155,10 +155,12 @@ function getRadoms() {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    height: 90%;
+    max-height: 622px;
     gap: 1.2em;
     border-top: 1px solid rgb(231, 235, 235);
+    max-height: 622px;
     overflow-x: hidden;
+    border-bottom: 1px solid rgb(231, 235, 235);
 }
 
 .card-container {
